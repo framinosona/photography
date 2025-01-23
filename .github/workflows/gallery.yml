@@ -18,14 +18,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
 
+      # Step 2: Restore Docker image cache
+      - name: Restore Docker Cache 📦
+        uses: actions/cache@v3
+        with:
+          path: docker-cache
+          key: thumbsup-image-cache
+
+      # Step 3: Load cached Docker image if available
+      - name: Load Cached Docker Image 🚚
+        run: |
+          if [ -f docker-cache/thumbsup.tar ]; then
+            docker load < docker-cache/thumbsup.tar
+          fi
+
+      # Step 4: Pull Docker image if not cached
+      - name: Pull Docker Image 🚚
+        run: |
+          docker image inspect thumbsupgallery/thumbsup || docker pull thumbsupgallery/thumbsup
+
+      # Step 5: Save Docker image to cache
+      - name: Save Docker Cache 📦
+        run: |
+          mkdir -p docker-cache
+          docker save thumbsupgallery/thumbsup > docker-cache/thumbsup.tar
+
+      # Step 6: Build Gallery
       - name: Build Gallery 🔧
-        run: docker run -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/ && thumbsup --config config.json"
-      
+        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/ && thumbsup --config config.json"
+
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3.0.1
         with:
