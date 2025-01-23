@@ -29,7 +29,7 @@ jobs:
           node-version: '18'
 
       - name: Setup thumbsup 🖼️
-        run: npm install -g thumbsup@2.18.0
+        run: npm install thumbsup
 
       - name: Build Gallery 🔧
         run: thumbsup --config config.json
