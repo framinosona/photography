@@ -18,28 +18,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Restore the Git repository from cache
+      # Restore the Git repository from cache
       - name: Restore repo from cache
         uses: actions/cache@v3
         with:
-          path: repo/.git
+          path: repo
           key: repo-cache-${{ github.ref_name }}
           restore-keys: |
             repo-cache-
 
-      # 2. Checkout the repository
+      # Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
           path: repo
 
-      # 3. Ensure repo is up to date
+      # Ensure repo is up to date
       - name: Pull latest changes
         run: |
           cd repo
-          git fetch --all
-          git reset --hard origin/${{ github.ref_name }}
+          git pull
 
       # Restore Docker image cache
       - name: Restore Docker Cache 📦
