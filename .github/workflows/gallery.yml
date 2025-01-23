@@ -18,18 +18,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
+      # 1. Restore the Git repository from cache
+      - name: Restore repo from cache
+        uses: actions/cache@v3
+        with:
+          path: repo/.git
+          key: repo-cache-${{ github.ref_name }}
+          restore-keys: |
+            repo-cache-
+
+      # 2. Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
+          path: repo
 
-      # Restore build_output cache
-      - name: Restore build_output Cache 📦
-        uses: actions/cache@v3
-        with:
-          path: build_output
-          key: build_output
+      # 3. Ensure repo is up to date
+      - name: Pull latest changes
+        run: |
+          cd repo
+          git fetch --all
+          git reset --hard origin/${{ github.ref_name }}
 
       # Restore Docker image cache
       - name: Restore Docker Cache 📦
@@ -58,12 +68,12 @@ jobs:
 
       # Build Gallery
       - name: Build Gallery 🔧
-        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/ && thumbsup --config config.json"
+        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/repo && thumbsup --config config.json"
 
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: 'build_output'
+          path: 'repo/build_output'
           name: github-pages
 
   # Deploy job
