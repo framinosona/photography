@@ -8,7 +8,7 @@ Follow these steps to set up and run the project locally:
 
 1. **Install Dependencies**:
 ```bash
-brew install python3 make gcc nvm
+brew install python3 make gcc nvm imagemagick ffmpeg gifsicle dcraw exiftool graphicsmagick
 ```
 
 2. **Install Node 18** (thumbsup needs it):
