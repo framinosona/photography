@@ -25,25 +25,28 @@ jobs:
           persist-credentials: false
 
       # Restore Docker image cache
-      - name: Restore Docker Cache 📦
+      - name: Restore Docker cache 💨
         uses: actions/cache@v3
         with:
           path: docker-cache
           key: thumbsup-image-cache
 
       # Restore Docker image cache
-      - name: Restore build_output 📦
+      - name: Restore build_output cache 💨
         uses: actions/cache@v3
         with:
           path: build_output
           key: build_output
 
       # Unzip build_output
-      - name: Unzip build_output 📦
-        run: unzip -o build_output.zip
+      - name: Unzip build_output if exists 📦
+        run: |
+          if [ -f build_output.zip ]; then
+            unzip build_output.zip
+          fi
 
       # Load cached Docker image if available
-      - name: Load Cached Docker Image 🚚
+      - name: Load Cached Docker Image 🚛
         run: |
           if [ -f docker-cache/thumbsup.tar ]; then
             docker load < docker-cache/thumbsup.tar
