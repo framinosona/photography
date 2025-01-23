@@ -31,19 +31,12 @@ jobs:
           path: docker-cache
           key: thumbsup-image-cache
 
-      # Restore Docker image cache
-      - name: Restore build_output cache 💨
-        uses: actions/cache@v3
+      # Download last run artifact
+      - name: Download last run artifact 📦
+        uses: actions/download-artifact@v3
         with:
+          name: github-pages
           path: build_output
-          key: build_output
-
-      # Unzip build_output
-      - name: Unzip build_output if exists 📦
-        run: |
-          if [ -f build_output.zip ]; then
-            unzip build_output.zip
-          fi
 
       # Load cached Docker image if available
       - name: Load Cached Docker Image 🚛
@@ -73,10 +66,6 @@ jobs:
         with:
           path: 'build_output'
           name: github-pages
-
-      # Zip build_output
-      - name: Zip build_output 📦
-        run: zip -r build_output.zip build_output
 
   # Deploy job
   deploy:
