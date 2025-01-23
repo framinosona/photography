@@ -1,2 +1,6 @@
 
 .DS_Store
+
+build_output/
+
+package-lock.json
