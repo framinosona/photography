@@ -18,27 +18,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Restore the Git repository from cache
-      - name: Restore repo from cache
-        uses: actions/cache@v3
-        with:
-          path: repo
-          key: repo-cache-${{ github.ref_name }}
-          restore-keys: |
-            repo-cache-
-
       # Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
-          path: repo
-
-      # Ensure repo is up to date
-      - name: Pull latest changes
-        run: |
-          cd repo
-          git pull
 
       # Restore Docker image cache
       - name: Restore Docker Cache 📦
@@ -46,6 +30,17 @@ jobs:
         with:
           path: docker-cache
           key: thumbsup-image-cache
+
+      # Restore Docker image cache
+      - name: Restore build_output 📦
+        uses: actions/cache@v3
+        with:
+          path: build_output
+          key: build_output
+
+      # Unzip build_output
+      - name: Unzip build_output 📦
+        run: unzip -o build_output.zip
 
       # Load cached Docker image if available
       - name: Load Cached Docker Image 🚚
@@ -67,17 +62,23 @@ jobs:
 
       # Build Gallery
       - name: Build Gallery 🔧
-        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/repo && thumbsup --config config.json"
+        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work && thumbsup --config config.json"
 
+      # Upload the build_output
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: 'repo/build_output'
+          path: 'build_output'
           name: github-pages
+
+      # Zip build_output
+      - name: Zip build_output 📦
+        run: zip -r build_output.zip build_output
 
   # Deploy job
   deploy:
     name: Publish static files to Github Pages
+    runs-on: ubuntu-latest
     needs: build
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
@@ -90,7 +91,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages 🚀
         id: deployment
