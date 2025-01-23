@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
+      <title>{{gallery.title}} - {{album.title}}</title>
+
+      <!-- FAVICON / WEBAPP -->
+      <link rel="apple-touch-icon" sizes="180x180" href="{{relative 'public/favicon/apple-touch-icon.png'}}">
+      <link rel="icon" type="image/png" sizes="32x32" href="{{relative 'public/favicon/favicon-32x32.png'}}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{{relative 'public/favicon/favicon-16x16.png'}}">
+      <link rel="manifest" href="{{relative 'public/site.webmanifest'}}">
+      <link rel="mask-icon" href="{{relative 'public/favicon/safari-pinned-tab.svg'}}" color="#000000">
+      <meta name="apple-mobile-web-app-title" content="Resume">
+      <meta name="application-name" content="Resume">
+      <meta name="msapplication-TileColor" content="#2d89ef">
+      <meta name="msapplication-TileImage" content="{{relative 'public/favicon/apple-touch-icon.png'}}">
+      <meta name="theme-color" content="#000000">
+
+      <link rel="stylesheet" href="{{relative 'public/lightgallery/css/lightgallery.css'}}" />
+      <link rel="stylesheet" href="{{relative 'public/videojs/video-js.min.css'}}" />
+      <link rel="stylesheet" href="{{relative 'public/lightgallery/css/lg-exif.min.css'}}" />
+      <link rel="stylesheet" href="{{relative 'public/core.css'}}" />
+      <link rel="stylesheet" href="{{relative 'public/theme.css'}}" />
+  </head>
+
+  <body>
+    <div id="first-side-ui-block" class="side-ui-block"></div>
+    <div id="second-side-ui-block" class="side-ui-block"></div>
+
+    {{> content}}
+    {{> video-loader}}
+
+    <!-- jQuery -->
+    <script src="{{relative 'public/jquery.min.js'}}"></script>
+    <!-- VideoJS -->
+    <script src="{{relative 'public/videojs/video.min.js'}}"></script>
+    <!-- LightGallery -->
+    <script src="{{relative 'public/lightgallery/js/lightgallery-all.min.js'}}"></script>
+    <script src="{{relative 'public/lightgallery/js/lg-exif.min.js'}}"></script>
+
+    <script>
+      $(document).ready(function() {
+        $("#media").lightGallery({
+          thumbWidth: 80,
+          controls: true,
+          loop : false,
+          download: true,
+          counter: true,
+          videojs: true,
+          fullScreen: true,
+          zoom: true
+        });
+      });
+    </script>
+
+    {{> analytics}}
+
+  </body>
+
+</html>

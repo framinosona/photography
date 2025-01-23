@@ -6,6 +6,6 @@
   "sort-albums-by": "title",
   "sort-media-by": "filename",
   "cleanup": true,
-  "theme": "cards",
+  "theme-path": "./theme",
   "footer": "Creative Commons License v1.0 by Francois Raminosona, <a href=\"https://thumbsup.github.io\">using thumbsup 💙</a>"
 }
