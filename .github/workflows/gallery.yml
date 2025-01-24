@@ -77,7 +77,7 @@ jobs:
 
       # Build Gallery
       - name: Build Gallery 🔧
-        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/repo && thumbsup --config config.json"
+        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work && thumbsup --config config.json"
 
       # zip build_output if available
       - name: Zip build_output Image 🚛
