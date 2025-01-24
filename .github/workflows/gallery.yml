@@ -18,11 +18,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Restore repo cache
+      - name: Restore gallery cache 💨
+        uses: actions/cache@v3
+        with:
+          path: repo
+          key: repo-cache
+
       # Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
         with:
+          fetch-depth: 0
           persist-credentials: false
+          path: repo
+
+      - name: Restore git-restore-mtime
+        run: brew install git-tools && cd repo && git restore-mtime
 
       # Restore Docker image cache
       - name: Restore Docker cache 💨
@@ -30,20 +42,6 @@ jobs:
         with:
           path: docker-cache
           key: thumbsup-image-cache
-
-      # Restore Docker image cache
-      - name: Restore build_output cache 💨
-        uses: actions/cache@v3
-        with:
-          path: build_output
-          key: build_output
-
-      # Unzip build_output
-      - name: Unzip build_output if exists 📦
-        run: |
-          if [ -f build_output.zip ]; then
-            unzip build_output.zip
-          fi
 
       # Load cached Docker image if available
       - name: Load Cached Docker Image 🚛
@@ -65,7 +63,7 @@ jobs:
 
       # Build Gallery
       - name: Build Gallery 🔧
-        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work && thumbsup --config config.json"
+        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/repo && thumbsup --config config.json"
 
       # Upload the build_output
       - name: Upload artifact ⬆️
@@ -73,10 +71,6 @@ jobs:
         with:
           path: 'build_output'
           name: github-pages
-
-      # Zip build_output
-      - name: Zip build_output 📦
-        run: zip -r build_output.zip build_output
 
   # Deploy job
   deploy:
