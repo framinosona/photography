@@ -4,3 +4,7 @@
 build_output/
 
 package-lock.json
+
+database.db
+
+database.log
