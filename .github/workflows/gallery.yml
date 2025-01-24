@@ -34,8 +34,11 @@ jobs:
           path: repo
 
       - name: Restore git-restore-mtime
-        run: brew install git-tools && cd repo && git restore-mtime
-
+        run: |
+          sudo apt install git-restore-mtime
+          cd repo
+          git restore-mtime
+          
       # Restore Docker image cache
       - name: Restore Docker cache 💨
         uses: actions/cache@v3
