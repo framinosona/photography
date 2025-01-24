@@ -1,7 +1,7 @@
 {
   "input": "./gallery",
   "scan-mode" : "partial",
-  "output": "../build_output",
+  "output": "./build_output",
   "database-file": "./database.db",
   "title": "Francois Raminosona Gallery",
   "sort-albums-by": "title",

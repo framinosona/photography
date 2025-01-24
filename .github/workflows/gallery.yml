@@ -18,30 +18,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Restore repo cache
-      - name: Restore gallery cache 💨
-        uses: actions/cache@v3
-        with:
-          path: repo
-          key: repo-cache
-
       # Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
         with:
-          fetch-depth: 0
           persist-credentials: false
-          path: repo
 
       - name: Restore git-restore-mtime
         run: |
           sudo apt install git-restore-mtime
-          cd repo
           git restore-mtime
-          
+
+      # Restore Database cache
+      - name: Restore Database cache 💨
+        uses: actions/cache@v4.2.0
+        with:
+          path: database.db
+          key: database-cache
+
+      # Restore Database cache
+      - name: Restore build_output cache 💨
+        uses: actions/cache@v4.2.0
+        with:
+          path: build_output.zip
+          key: build_output-cache
+
+      # unzip build_output if available
+      - name: Unzip build_output Image 🚛
+        run: |
+          if [ -f build_output.zip ]; then
+            unzip build_output.zip
+          fi
+
       # Restore Docker image cache
       - name: Restore Docker cache 💨
-        uses: actions/cache@v3
+        uses: actions/cache@v4.2.0
         with:
           path: docker-cache
           key: thumbsup-image-cache
@@ -67,6 +78,13 @@ jobs:
       # Build Gallery
       - name: Build Gallery 🔧
         run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work/repo && thumbsup --config config.json"
+
+      # zip build_output if available
+      - name: Zip build_output Image 🚛
+        run: |
+          if [ -d build_output ]; then
+            zip -r build_output.zip build_output
+          fi
 
       # Upload the build_output
       - name: Upload artifact ⬆️
