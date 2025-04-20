@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Dev Mode",
+        "type": "node",
+        "request": "launch",
+        "preLaunchTask": "Generate Gallery with Docker",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run",
+          "serve"
+        ],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen"
+      }
+    ]
+  }

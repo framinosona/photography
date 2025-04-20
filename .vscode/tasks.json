@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate Gallery with Docker",
+      "type": "shell",
+      "command": "./generate_locally.sh",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Clean Gallery",
+      "type": "shell",
+      "command": "npm run clean",
+      "problemMatcher": []
+    },
+    {
+      "label": "Rebuild Gallery",
+      "type": "shell",
+      "command": "npm run rebuild",
+      "problemMatcher": []
+    },
+    {
+      "label": "Serve Gallery",
+      "type": "shell",
+      "command": "npm run serve",
+      "problemMatcher": []
+    },
+    {
+      "label": "Preview Gallery",
+      "type": "shell",
+      "command": "npm run preview",
+      "problemMatcher": []
+    }
+  ]
+}
