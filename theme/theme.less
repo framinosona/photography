@@ -7,10 +7,6 @@
 @body-color: #444;
 @header-color: #444;
 @nav-border: #ddd;
-@light-blue: #215f9a;
-@dark-blue: #0B3041;
-@gray-tint: rgba(64, 80, 128, 0.10);
-
 
 // -----------------------------------
 // Generic styles
@@ -33,7 +29,7 @@ html, body {
 body {
   background: @body-background;
   color: @body-color;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: lighter;
   margin-bottom: 1em;
@@ -65,29 +61,7 @@ a {
 // -----------------------------------
 
 #container {
-  padding: 2em 0 2em 5em;
-}
-
-.side-ui-block {
-  width: 4em;
-  position: fixed;
-  left: 0;
-  aspect-ratio: 1;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-}
-
-#first-side-ui-block {
-  background-color: @dark-blue;
-  height: 100vh;
-  top: 0;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-}
-
-#second-side-ui-block {
-  background-color: @light-blue;
-  height: 50vh;
-  top: 50vh;
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
+  padding: 2em;
 }
 
 // -----------------------------------
