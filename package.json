@@ -2,7 +2,7 @@
     "scripts": {
       "serve": "serve build_output -l 3000",
       "preview": "npm run build && npm run serve",
-      "build": "thumbsup --input ./gallery --output build_output",
+      "build": "thumbsup --config ./config.json",
       "clean": "rm -rf build_output",
       "rebuild": "npm run clean && npm run build",
       "dev": "npm run build -- --watch && npm run serve",
