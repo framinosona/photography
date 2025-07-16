@@ -3,7 +3,7 @@
   "scan-mode" : "partial",
   "output": "./build_output",
   "database-file": "./database.db",
-  "title": "Francois Raminosona Gallery",
+  "title": "Francois Raminosona's Gallery",
   "sort-albums-by": "title",
   "sort-media-by": "filename",
   "cleanup": true,

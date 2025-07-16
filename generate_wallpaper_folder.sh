@@ -7,6 +7,12 @@ SOURCE_DIR="./gallery"
 DEST_DIR="../all_photos"
 
 # Create the destination directory if it doesn't exist
+if [ -d "$DEST_DIR" ]; then
+  echo "⚠️  Destination directory already exists. Please remove it before running the script."
+  exit 1
+fi
+# Create the destination directory
+echo "📂 Creating destination directory..."
 mkdir -p "$DEST_DIR"
 
 # Copy all image files and prefix with parent folder to avoid conflicts
