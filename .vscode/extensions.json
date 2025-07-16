@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-json",
+    "esbenp.prettier-vscode",
+    "ms-python.python",
+    "ms-vscode.live-server"
+  ]
+}

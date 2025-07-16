@@ -1,0 +1,51 @@
+{
+  "folders": [
+    {
+      "name": "Photography Gallery",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "node_modules": true,
+      "build_output/media/**": true,
+      "database.db": false,
+      "database.log": false
+    },
+    "search.exclude": {
+      "build_output/media/**": true,
+      "node_modules": true
+    },
+    "typescript.preferences.includePackageJsonAutoImports": "off",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+      "*.html": "${capture}.css",
+      "config.json": "database.db, database.log"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.vscode-json",
+      "bradlc.vscode-tailwindcss",
+      "formulahendry.auto-rename-tag",
+      "esbenp.prettier-vscode",
+      "ms-python.python",
+      "ms-vscode.live-server"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Quick Setup",
+        "type": "shell",
+        "command": "echo 'Setting up photography gallery workspace...' && brew install graphicsmagick && npm install -g thumbsup",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "reveal": "always"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "files.associations": {
+    "*.hbs": "handlebars",
+    "*.yml": "yaml"
+  },
+  "files.exclude": {
+    "node_modules": true,
+    "build_output/media/large/**": true,
+    "build_output/media/small/**": true,
+    "build_output/media/thumbs/**": true
+  },
+  "search.exclude": {
+    "build_output/media/**": true,
+    "node_modules": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.html": "${capture}.css",
+    "config.json": "database.db, database.log, generate_wallpaper_folder.sh"
+  },
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "python.defaultInterpreterPath": "/usr/bin/python3"
+}

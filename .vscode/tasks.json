@@ -2,38 +2,79 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Generate Gallery with Docker",
+      "label": "Install Dependencies",
       "type": "shell",
-      "command": "./generate_locally.sh",
-      "problemMatcher": [],
+      "command": "brew",
+      "args": ["install", "graphicsmagick"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Install Thumbsup",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install", "-g", "thumbsup"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "dependsOn": "Install Dependencies"
+    },
+    {
+      "label": "Build Gallery",
+      "type": "shell",
+      "command": "thumbsup",
+      "args": ["--config", "config.json"],
       "group": {
         "kind": "build",
         "isDefault": true
-      }
-    },
-    {
-      "label": "Clean Gallery",
-      "type": "shell",
-      "command": "npm run clean",
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Rebuild Gallery",
+      "label": "Run Server",
       "type": "shell",
-      "command": "npm run rebuild",
+      "command": "python3",
+      "args": ["-m", "http.server", "8000", "--directory", "build_output"],
+      "group": "test",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
       "problemMatcher": []
     },
     {
-      "label": "Serve Gallery",
-      "type": "shell",
-      "command": "npm run serve",
-      "problemMatcher": []
+      "label": "Setup Everything",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Install Dependencies", "Install Thumbsup"],
+      "group": "build"
     },
     {
-      "label": "Preview Gallery",
-      "type": "shell",
-      "command": "npm run preview",
-      "problemMatcher": []
+      "label": "Build and Run",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Build Gallery", "Run Server"],
+      "group": "test"
     }
   ]
 }
