@@ -24,40 +24,27 @@ jobs:
         with:
           persist-credentials: false
 
-      # Restore Docker image cache
-      - name: Restore Docker cache 💨
-        uses: actions/cache@v4.2.3
+      - name: Set up GraphicsMagick
+        run: brew install graphicsmagick
+
+        - name: Set up Node.js
+        uses: actions/setup-node@v4.1.0
         with:
-          path: docker-cache
-          key: thumbsup-image-cache
+          node-version: '18' # Specify the Node.js version to use
 
-      # Load cached Docker image if available
-      - name: Load Cached Docker Image 🚛
-        run: |
-          if [ -f docker-cache/thumbsup.tar ]; then
-            docker load < docker-cache/thumbsup.tar
-          fi
-
-      # Pull Docker image if not cached
-      - name: Pull Docker Image 🚚
-        run: |
-          docker image inspect thumbsupgallery/thumbsup || docker pull thumbsupgallery/thumbsup
-
-      # Save Docker image to cache
-      - name: Save Docker Cache 📦
-        run: |
-          mkdir -p docker-cache
-          docker save thumbsupgallery/thumbsup > docker-cache/thumbsup.tar
+      # Install dependencies
+      - name: Install dependencies 📦
+        run: npm install -g thumbsup
 
       # Build Gallery
       - name: Build Gallery 🔧
-        run: docker run --rm -v "$(pwd):/work" thumbsupgallery/thumbsup /bin/sh -c "cd /work && thumbsup --config config.json"
+        run: thumbsup --config config.json
 
       # Upload the build_output
       - name: Upload artifact ⬆️
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: 'build_output'
+          path: "build_output"
           name: github-pages
 
   # Deploy job
@@ -68,8 +55,8 @@ jobs:
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
 
     # Deploy to the github-pages environment
     environment:
