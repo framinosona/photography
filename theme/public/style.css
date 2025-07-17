@@ -19,7 +19,7 @@ ul {
 }
 
 #container {
-  padding: 5em 0.4em 1em 4em;
+  padding: 5em 0.4em 1em 5em;
   display: flex;
   flex-direction: column;
 }
