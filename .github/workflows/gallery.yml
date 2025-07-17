@@ -35,7 +35,6 @@ jobs:
         uses: actions/setup-node@v4.1.0
         with:
           node-version: "18" # Specify the Node.js version to use
-          cache: "npm" # Cache npm dependencies
 
       # Install dependencies
       - name: Install dependencies 📦
