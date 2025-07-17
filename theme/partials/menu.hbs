@@ -1,0 +1,39 @@
+<!-- MENU PANEL -->
+<div id="framinosona-menu-panel">
+  <div class="framinosona-menu-header">
+    <h1>Gallery</h1>
+    <h2>by Francois Raminosona</h2>
+  </div>
+  <div class="framinosona-menu-content"></div>
+  <div class="framinosona-menu-links">
+    <ul>
+      <li><a href="https://francois.raminosona.com">Resume</a></li>
+      <li><a href="https://blog.francois.raminosona.com">Blog</a></li>
+      <li><a href="https://gallery.francois.raminosona.com">Gallery</a></li>
+      <li><a href="https://github.com/framinosona">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/framinosona/">LinkedIn</a></li>
+      <li><a href="https://www.instagram.com/framinosona/">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="framinosona-menu-footer">
+    <p>© 2023 Francois Raminosona</p>
+    {{#if config.build}}
+    <p>Version: {{config.build.version}} ({{config.build.commit}}) | Built: {{config.build.date}} | Environment:
+      {{config.build.environment}}</p>
+    {{/if}}
+  </div>
+</div>
+<div id="framinosona-side-ui-block-top" class="framinosona-side-ui-block">
+  <img class="framinosona-menu-icon" src="public/favicon/icon.svg" alt="Francois Raminosona Gallery Logo" />
+</div>
+<div id="framinosona-side-ui-block-bottom" class="framinosona-side-ui-block"></div>
+
+<div id="framinosona-menu-top-bar">
+  <h1>{{#each breadcrumbs~}}
+    <a class="breadcrumb-item" href="{{relative url}}">{{title}}</a>&nbsp;/&nbsp;
+    {{~/each~}}
+    <a class="breadcrumb-item" href="{{relative album.url}}">{{album.title}}</a>
+  </h1>
+</div>
+
+<script src="{{relative 'public/menu.js'}}"></script>

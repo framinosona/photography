@@ -1,6 +1,6 @@
 {
   "input": "./gallery",
-  "scan-mode" : "partial",
+  "scan-mode": "partial",
   "output": "./build_output",
   "database-file": "./database.db",
   "title": "Francois Raminosona's Gallery",
@@ -8,6 +8,5 @@
   "sort-media-by": "filename",
   "cleanup": true,
   "embed-exif": true,
-  "theme-path": "./theme",
-  "footer": "Creative Commons License v1.0 by Francois Raminosona, <a href=\"https://thumbsup.github.io\">using thumbsup 💙</a>"
+  "theme-path": "./theme"
 }

@@ -10,3 +10,6 @@ database.db
 database.log
 
 .idea/
+
+# Versioned config file (generated during build)
+config-versioned.json
