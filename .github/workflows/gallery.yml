@@ -31,17 +31,15 @@ jobs:
           echo "GALLERY_BUILD_DATE=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_ENV
           echo "Generated version: $(date '+%Y.%m.%d-%H%M') ($(git rev-parse --short HEAD))"
 
-      - name: Set up exiftool
-        run: sudo apt-get install -y exiftool
-
       - name: Set up Node.js
         uses: actions/setup-node@v4.1.0
         with:
           node-version: "18" # Specify the Node.js version to use
+          cache: "npm" # Cache npm dependencies
 
       # Install dependencies
-      - name: Install thumbsup 📦
-        run: npm install -g thumbsup
+      - name: Install dependencies 📦
+        run: npm ci
 
       # Build Gallery
       - name: Build Gallery 🔧
@@ -59,7 +57,7 @@ jobs:
              config.json > config-versioned.json
 
           # Build with versioned config
-          thumbsup --config config-versioned.json
+          npx thumbsup --config config-versioned.json
 
       # Upload the build_output
       - name: Upload artifact ⬆️

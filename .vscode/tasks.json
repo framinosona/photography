@@ -4,8 +4,8 @@
     {
       "label": "Install Dependencies",
       "type": "shell",
-      "command": "brew",
-      "args": ["install", "graphicsmagick"],
+      "command": "npm",
+      "args": ["ci"],
       "group": "build",
       "presentation": {
         "echo": true,
@@ -15,14 +15,13 @@
       },
       "runOptions": {
         "runOn": "folderOpen"
-      },
-      "dependsOrder": "sequence"
+      }
     },
     {
-      "label": "Install Thumbsup",
+      "label": "Install Thumbsup (Legacy)",
       "type": "shell",
-      "command": "npm",
-      "args": ["install", "-g", "thumbsup"],
+      "command": "echo",
+      "args": ["Thumbsup is now installed via npm dependencies"],
       "group": "build",
       "presentation": {
         "echo": true,
@@ -35,8 +34,8 @@
     {
       "label": "Build Gallery",
       "type": "shell",
-      "command": "thumbsup",
-      "args": ["--config", "config.json"],
+      "command": "npx",
+      "args": ["thumbsup", "--config", "config-versioned.json"],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -47,7 +46,9 @@
         "focus": false,
         "panel": "shared"
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "dependsOn": ["Clean Build Output", "Generate Version Info"],
+      "dependsOrder": "sequence"
     },
     {
       "label": "Run Server",
@@ -67,7 +68,7 @@
     {
       "label": "Setup Everything",
       "dependsOrder": "sequence",
-      "dependsOn": ["Install Dependencies", "Install Thumbsup"],
+      "dependsOn": ["Install Dependencies"],
       "group": "build"
     },
     {
