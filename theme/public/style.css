@@ -7,6 +7,12 @@ body {
     "Ubuntu", "Cantarell", sans-serif;
 }
 
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #container {
   padding: 5em 0.4em 1em 4em;
 }
