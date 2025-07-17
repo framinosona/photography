@@ -36,7 +36,7 @@ jobs:
       # Build Gallery
       - name: Build Gallery 🔧
         run: |
-          thumbsup --config config-versioned.json
+          thumbsup --config config.json
 
       # Upload the build_output
       - name: Upload artifact ⬆️
