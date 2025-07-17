@@ -26,7 +26,6 @@ function closeMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  initializeMenu();
   framinosonaTopSideBlock.addEventListener("click", toggleMenu);
 });
 
