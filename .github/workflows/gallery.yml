@@ -53,7 +53,9 @@ jobs:
 
       # Install dependencies
       - name: Install thumbsup 📦
-        run: npm install -g thumbsup # Build Gallery
+        run: npm install -g thumbsup
+
+      # Build Gallery
       - name: Build Gallery 🔧
         run: |
           # Ensure database directory exists for cache restoration
