@@ -13,6 +13,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+ol,
+ul {
+  list-style: none;
+}
+
 #container {
   padding: 5em 0.4em 1em 4em;
 }
@@ -35,11 +40,25 @@ nav.breadcrumbs {
 #albums a .info .date {
   display: none;
 }
+
+#albums .info {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.4em;
+}
+#albums .info h3 {
+  margin: 0;
+}
+
 #media {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1em;
   justify-items: center;
+  padding: 0;
 }
 
 #media li {
