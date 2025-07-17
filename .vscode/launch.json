@@ -2,17 +2,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Gallery Server",
-      "type": "node",
+      "name": "Run Gallery Server",
+      "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/build_output",
+      "module": "http.server",
+      "args": ["8000", "--directory", "build_output"],
+      "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
-      "preLaunchTask": "Build Gallery",
-      "serverReadyAction": {
-        "pattern": "Serving HTTP on .* port ([0-9]+)",
-        "uriFormat": "http://localhost:%s",
-        "action": "openExternally"
-      }
+      "justMyCode": true,
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      },
+      "preLaunchTask": "Build Gallery"
     }
   ]
 }
