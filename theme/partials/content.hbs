@@ -3,6 +3,7 @@
   <!--
     Nested albums, if any
   -->
+  {{#if album.albums.length}}
   <div id="albums">
     {{#each album.albums~}}
     <a href="{{relative url}}" style="background-image: url('{{relative previews.0.urls.small}}')">
@@ -14,15 +15,18 @@
     </a>
     {{~/each}}
   </div>
+  {{/if}}
 
   <!--
     All photos and videos
   -->
+  {{#if album.files.length}}
   <ul id="media" class="clearfix">
     {{#each album.files~}}
     {{> thumbnail}}
     {{~/each}}
   </ul>
+  {{/if}}
 
   <!--
     Pagination

@@ -20,6 +20,8 @@ ul {
 
 #container {
   padding: 5em 0.4em 1em 4em;
+  display: flex;
+  flex-direction: column;
 }
 
 nav.breadcrumbs {
@@ -32,7 +34,6 @@ nav.breadcrumbs {
   gap: 1em;
   justify-items: center;
   justify-content: center;
-  padding-bottom: 2em;
 }
 #albums a {
   margin: 0;
