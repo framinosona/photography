@@ -25,7 +25,10 @@ function closeMenu() {
   isFraminosonaMenuOpen = false;
 }
 
-framinosonaTopSideBlock.addEventListener("click", toggleMenu);
+document.addEventListener("DOMContentLoaded", function () {
+  initializeMenu();
+  framinosonaTopSideBlock.addEventListener("click", toggleMenu);
+});
 
 // Optional: Close menu when clicking outside
 document.addEventListener("click", function (event) {
