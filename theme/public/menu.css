@@ -150,7 +150,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 1em;
 }
 
@@ -168,6 +168,9 @@
   transition: all 0.3s ease;
   font-weight: 500;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #framinosona-menu-panel .framinosona-menu-links a:hover {
@@ -175,6 +178,13 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   color: white;
+}
+
+#framinosona-menu-panel .framinosona-menu-link-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 #framinosona-menu-top-bar {
