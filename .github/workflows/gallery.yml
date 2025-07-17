@@ -39,13 +39,41 @@ jobs:
         with:
           node-version: "18" # Specify the Node.js version to use
 
+      # Cache thumbsup database and processed media
+      - name: Cache thumbsup database and media 💾
+        uses: actions/cache@v4
+        with:
+          path: |
+            database.db
+            build_output
+          key: thumbsup-cache-${{ hashFiles('gallery/**/*') }}
+          restore-keys: |
+            thumbsup-cache-
+          enableCrossOsArchive: true # Enable cross-OS caching
+
       # Install dependencies
       - name: Install thumbsup 📦
-        run: npm install -g thumbsup
-
-      # Build Gallery
+        run: npm install -g thumbsup # Build Gallery
       - name: Build Gallery 🔧
         run: |
+          # Ensure database directory exists for cache restoration
+          mkdir -p $(dirname database.db)
+
+          # Show cache status
+          if [ -f "database.db" ]; then
+            echo "✅ Database cache restored - thumbsup will process incrementally"
+            ls -la database.db
+          else
+            echo "🔄 No database cache found - thumbsup will process all images"
+          fi
+
+          if [ -d "build_output" ]; then
+            echo "✅ Media cache restored"
+            find build_output -type f | wc -l | xargs echo "Cached media files:"
+          else
+            echo "🔄 No media cache found"
+          fi
+
           # Create a temporary config with build info
           jq --arg version "$GALLERY_VERSION" \
              --arg commit "$GALLERY_COMMIT" \
