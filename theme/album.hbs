@@ -2,17 +2,6 @@
 <html>
 
   <head>
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-        w[l] = w[l] || []; w[l].push({
-          'gtm.start':
-            new Date().getTime(), event: 'gtm.js'
-        }); var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-MZ7Z5K8');</script>
-    <!-- End Google Tag Manager -->
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>{{gallery.title}} - {{album.title}}</title>
@@ -21,40 +10,12 @@
     <meta name="description"
       content="Photography gallery by Francois Raminosona. Explore photos and videos from the album {{album.title}}.">
 
-    <!-- img/favicon / WEBAPP -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{relative 'public/img/favicon/apple-touch-icon.png'}}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{relative 'public/img/favicon/favicon-32x32.png'}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{relative 'public/img/favicon/favicon-16x16.png'}}">
-    <link rel="manifest" href="{{relative 'public/site.webmanifest'}}">
-    <link rel="mask-icon" href="{{relative 'public/img/favicon/icon.svg'}}" color="#0b3041">
-    <meta name="apple-mobile-web-app-title" content="{{gallery.title}} - {{album.title}}">
-    <meta name="application-name" content="{{gallery.title}} - {{album.title}}">
-    <meta name="msapplication-TileColor" content="#0b3041">
-    <meta name="msapplication-TileImage" content="{{relative 'public/img/favicon/apple-touch-icon.png'}}">
-    <meta name="theme-color" content="#0b3041">
-    <!-- End img/favicon / WEBAPP -->
-
-    <!-- lightgallery -->
-    <link rel="stylesheet" href="{{relative 'public/lightgallery/css/lightgallery.css'}}" />
-    <link rel="stylesheet" href="{{relative 'public/videojs/video-js.min.css'}}" />
-    <link rel="stylesheet" href="{{relative 'public/lightgallery/css/lg-exif.min.css'}}" />
-    <script src="{{relative 'public/jquery.min.js'}}"></script>
-    <script src="{{relative 'public/videojs/video.min.js'}}"></script>
-    <script src="{{relative 'public/lightgallery/js/lightgallery-all.min.js'}}"></script>
-    <script src="{{relative 'public/lightgallery/js/lg-exif.min.js'}}"></script>
-    <!-- End lightgallery -->
-
-    <!--<link rel="stylesheet" href="{{relative 'public/core.css'}}" />-->
-    <link rel="stylesheet" href="{{relative 'public/theme.css'}}" />
-    <link rel="stylesheet" href="{{relative 'public/style.css'}}" />
-    <link rel="stylesheet" href="{{relative 'public/menu.css'}}" />
+    {{> favicon}}
+    {{> js_files}}
+    {{> css_files}}
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ7Z5K8" height="0" width="0"
-        style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     {{> menu}}
     {{> content}}
@@ -69,7 +30,7 @@
           loop: true,
           download: true,
           counter: true,
-          videojs: true,
+          videojs: false,
           fullScreen: true,
           zoom: true
         });

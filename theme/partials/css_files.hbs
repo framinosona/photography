@@ -1,0 +1,28 @@
+<!-- Video.js CSS with CDN fallback -->
+<link rel="stylesheet" href="https://vjs.zencdn.net/8.6.1/video-js.css">
+<script>
+  // Check if Video.js CSS loaded, fallback to local if not
+  var vjsCSSLoaded = false;
+  try {
+    var sheets = document.styleSheets;
+    for (var i = 0; i < sheets.length; i++) {
+      if (sheets[i].href && sheets[i].href.includes('video-js.css')) {
+        vjsCSSLoaded = true;
+        break;
+      }
+    }
+  } catch (e) { }
+
+  if (!vjsCSSLoaded) {
+    document.write('<link rel="stylesheet" href="{{relative "public/videojs/video-js.min.css"}}">');
+  }
+</script>
+
+<!-- LightGallery CSS (keep local since it might be customized) -->
+<link rel="stylesheet" href="{{relative 'public/lightgallery/css/lightgallery.css'}}" />
+<link rel="stylesheet" href="{{relative 'public/lightgallery/css/lg-exif.min.css'}}" />
+
+<!-- Your custom CSS (always local) -->
+<link rel="stylesheet" href="{{relative 'public/theme.css'}}" />
+<link rel="stylesheet" href="{{relative 'public/style.css'}}" />
+<link rel="stylesheet" href="{{relative 'public/menu.css'}}" />

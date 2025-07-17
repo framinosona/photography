@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Install Dependencies",
+      "label": "Install Dependencies (mac)",
       "type": "shell",
       "command": "brew",
       "args": ["install", "graphicsmagick"],
@@ -30,13 +30,13 @@
         "focus": false,
         "panel": "shared"
       },
-      "dependsOn": "Install Dependencies"
+      "dependsOn": "Install Dependencies (mac)"
     },
     {
       "label": "Build Gallery",
       "type": "shell",
       "command": "thumbsup",
-      "args": ["--config", "config.json"],
+      "args": ["--config", "config.json", "--cache"],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -63,12 +63,6 @@
         "panel": "shared"
       },
       "problemMatcher": []
-    },
-    {
-      "label": "Setup Everything",
-      "dependsOrder": "sequence",
-      "dependsOn": ["Install Dependencies", "Install Thumbsup"],
-      "group": "build"
     },
     {
       "label": "Build and Run",
