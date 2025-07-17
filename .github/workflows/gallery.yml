@@ -33,6 +33,14 @@ jobs:
       # Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
+        with:
+          clean: false
+
+      - name: Update gallery with latest changes 🔄
+        run: |
+          # Force checkout the gallery folder to get latest changes
+          git checkout HEAD -- gallery/
+          echo "✅ Gallery folder updated with latest git changes"
 
       - name: Generate Version Info 🏷️
         run: |
