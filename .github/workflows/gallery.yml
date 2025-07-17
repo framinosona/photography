@@ -20,9 +20,6 @@ jobs:
       # Checkout the repository
       - name: Checkout ⬇️
         uses: actions/checkout@v4.2.2
-        with:
-          persist-credentials: false
-          fetch-depth: 0 # Fetch full history for version generation
 
       - name: Generate Version Info 🏷️
         run: |
