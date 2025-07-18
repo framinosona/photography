@@ -11,25 +11,27 @@
   </div>
   <div class="framinosona-menu-content">
     <h3>Albums</h3>
-    <div class="framinosona-album-list">
+    <ul class="framinosona-album-list">
       {{#each gallery.home.albums}}
-      <div class="framinosona-album-item">
-        {{#if this.previews}}
-        {{#each this.previews}}
-        {{#if @first}}
-        <div class="framinosona-album-preview">
-          <img src="{{relative this.urls.thumbnail}}" alt="{{../title}}" />
-        </div>
-        {{/if}}
-        {{/each}}
-        {{/if}}
-        <div class="framinosona-album-info">
-          <h4><a href="{{relative this.url}}">{{this.title}}</a></h4>
-          <p class="framinosona-album-summary">{{this.summary}}</p>
-        </div>
-      </div>
+      <li class="framinosona-album-item">
+        <a href="{{relative this.url}}" class="framinosona-album-link">
+          {{#if this.previews}}
+          {{#each this.previews}}
+          {{#if @first}}
+          <div class="framinosona-album-preview">
+            <img src="{{relative this.urls.thumbnail}}" alt="{{../title}}" />
+          </div>
+          {{/if}}
+          {{/each}}
+          {{/if}}
+          <div class="framinosona-album-info">
+            <h4>{{this.title}}</h4>
+            <p class="framinosona-album-summary">{{this.summary}}</p>
+          </div>
+        </a>
+      </li>
       {{/each}}
-    </div>
+    </ul>
   </div>
   <div class="framinosona-menu-links">
     <ul>

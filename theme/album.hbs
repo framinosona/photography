@@ -17,10 +17,18 @@
 
   <body>
 
+
     {{> menu}}
     {{> content}}
     {{> video-loader}}
 
+    {{#if album.previews}}
+    {{#each album.previews}}
+    {{#if @first}}
+    <div class="framinosona-album-preview-background" style="background-image: url('{{relative this.urls.large}}');" />
+    {{/if}}
+    {{/each}}
+    {{/if}}
     <script>
       $(document).ready(function () {
         $("#media").lightGallery({
@@ -36,6 +44,7 @@
         });
       });
     </script>
+
 
   </body>
 

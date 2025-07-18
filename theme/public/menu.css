@@ -234,9 +234,6 @@
   #framinosona-menu-panel.open {
     left: 0;
   }
-  #framinosona-menu-panel .framinosona-menu-links {
-    padding: 1em 1em 1em 5em;
-  }
 
   #framinosona-menu-panel .framinosona-menu-header {
     flex-direction: column;
@@ -245,10 +242,13 @@
     gap: 0.2em;
   }
   #framinosona-menu-panel .framinosona-menu-content {
-    padding: 1em 1em 1em 5em;
+    padding: 0em 1em 1em 4.6em;
   }
   #framinosona-menu-panel .framinosona-menu-footer {
-    padding: 1em 1em 1em 5em;
+    padding: 1em 1em 1em 4.6em;
+  }
+  #framinosona-menu-panel .framinosona-menu-links {
+    padding: 1em 1em 1em 4.6em;
   }
 }
 
@@ -258,9 +258,16 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .framinosona-album-item {
+  margin: 0;
+}
+
+.framinosona-album-link {
   display: flex;
   gap: 1em;
   padding: 0.4em;
@@ -273,9 +280,11 @@
   justify-content: flex-start;
   flex-wrap: nowrap;
   flex-direction: row;
+  text-decoration: none;
+  color: inherit;
 }
 
-.framinosona-album-item:hover {
+.framinosona-album-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -304,15 +313,10 @@
   margin: 0 0 0.5em 0;
   font-size: 1.1em;
   font-weight: 500;
-}
-
-.framinosona-album-info h4 a {
   color: #87ceeb;
-  text-decoration: none;
-  transition: color 0.3s ease;
 }
 
-.framinosona-album-info h4 a:hover {
+.framinosona-album-link:hover .framinosona-album-info h4 {
   color: white;
 }
 
