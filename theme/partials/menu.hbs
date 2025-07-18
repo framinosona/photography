@@ -9,7 +9,28 @@
     <h1>Gallery</h1>
     <h2>by Francois Raminosona</h2>
   </div>
-  <div class="framinosona-menu-content"></div>
+  <div class="framinosona-menu-content">
+    <h3>Albums</h3>
+    <div class="framinosona-album-list">
+      {{#each gallery.home.albums}}
+      <div class="framinosona-album-item">
+        {{#if this.previews}}
+        {{#each this.previews}}
+        {{#if @first}}
+        <div class="framinosona-album-preview">
+          <img src="{{relative this.urls.thumbnail}}" alt="{{../title}}" />
+        </div>
+        {{/if}}
+        {{/each}}
+        {{/if}}
+        <div class="framinosona-album-info">
+          <h4><a href="{{relative this.url}}">{{this.title}}</a></h4>
+          <p class="framinosona-album-summary">{{this.summary}}</p>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
   <div class="framinosona-menu-links">
     <ul>
       <li><a href="https://francois.raminosona.com"><img src="{{relative 'public/img/icons/resume.svg'}}" alt="Resume"
