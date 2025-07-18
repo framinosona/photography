@@ -36,7 +36,7 @@
       "label": "Build Gallery",
       "type": "shell",
       "command": "thumbsup",
-      "args": ["--config", "config.json", "--cache"],
+      "args": ["--config", "config.json"],
       "group": {
         "kind": "build",
         "isDefault": true
