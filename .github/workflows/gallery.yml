@@ -25,7 +25,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y graphicsmagick libimage-exiftool-perl
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4.1.0
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: "18" # Specify the Node.js version to use
 
