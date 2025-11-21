@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Allow access to main gallery pages
+Allow: /index.html
+Allow: /*.html
+
+# Allow access to CSS, JS, and image files
+Allow: /public/
+Allow: /media/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+
+# Block access to build artifacts and config files
+Disallow: /database.db
+Disallow: /*.json
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.DS_Store
+
+# Crawl-delay to be respectful to server resources
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://framinosona.github.io/photography/sitemap.xml
