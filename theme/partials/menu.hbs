@@ -1,71 +1,7 @@
 <!-- MENU PANEL -->
-<div id="framinosona-menu-panel">
-  <div class="framinosona-menu-header">
-    <h1>Gallery</h1>
-    <h2>by Francois Raminosona</h2>
-  </div>
-  <div class="framinosona-menu-content">
-    <h3>Albums</h3>
-    <ul class="framinosona-album-list">
-      {{#each gallery.home.albums}}
-      <li class="framinosona-album-item">
-        <a href="{{relative this.url}}" class="framinosona-album-link">
-          {{#if this.previews}}
-          {{#each this.previews}}
-          {{#if @first}}
-          <div class="framinosona-album-preview">
-            <img src="{{relative this.urls.thumbnail}}" alt="{{../title}}" />
-          </div>
-          {{/if}}
-          {{/each}}
-          {{/if}}
-          <div class="framinosona-album-info">
-            <h4>{{this.title}}</h4>
-            <p class="framinosona-album-summary">{{this.summary}}</p>
-          </div>
-        </a>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-  <div class="framinosona-menu-links">
-    <ul>
-      <li><a href="https://francois.raminosona.com"><img src="{{relative 'public/img/icons/resume.svg'}}" alt="Resume"
-            class="framinosona-menu-link-icon">Resume</a></li>
-      <li><a href="https://blog.francois.raminosona.com"><img src="{{relative 'public/img/icons/blog.svg'}}" alt="Blog"
-            class="framinosona-menu-link-icon">Blog</a></li>
-      <li><a href="https://gallery.francois.raminosona.com"><img src="{{relative 'public/img/icons/photography.svg'}}"
-            alt="Gallery" class="framinosona-menu-link-icon">Gallery</a></li>
-      <li><a href="https://flights.francois.raminosona.com"><img src="{{relative 'public/img/icons/flights.svg'}}"
-            alt="Flights" class="framinosona-menu-link-icon">Flights</a></li>
-      <li><a href="https://github.com/framinosona"><img src="{{relative 'public/img/icons/github.svg'}}" alt="GitHub"
-            class="framinosona-menu-link-icon">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/framinosona/"><img src="{{relative 'public/img/icons/linkedin.svg'}}"
-            alt="LinkedIn" class="framinosona-menu-link-icon">LinkedIn</a></li>
-      <li><a href="https://www.instagram.com/framinosona/"><img src="{{relative 'public/img/icons/instagram.svg'}}"
-            alt="Instagram" class="framinosona-menu-link-icon">Instagram</a></li>
-    </ul>
-  </div>
-  <div class="framinosona-menu-footer">
-    <p>© 2023 Francois Raminosona</p>
-    {{#if config.build}}
-    <p>Version: {{config.build.version}} ({{config.build.commit}}) | Built: {{config.build.date}} | Environment:
-      {{config.build.environment}}</p>
-    {{/if}}
-  </div>
-</div>
-<div id="framinosona-side-ui-block-top" class="framinosona-side-ui-block">
-  <img class="framinosona-menu-icon" src="{{relative 'public/img/favicon/icon.svg'}}" alt="Gallery Logo" />
-  <img class="framinosona-menu-toggle-icon" src="{{relative 'public/img/arrow.svg'}}" alt="Menu toggle" />
-</div>
-<div id="framinosona-side-ui-block-bottom" class="framinosona-side-ui-block"></div>
 
 <div id="framinosona-menu-top-bar">
-  <h1>{{#each breadcrumbs~}}
-    <a class="breadcrumb-item" href="{{relative url}}">{{title}}</a>&nbsp;/&nbsp;
-    {{~/each~}}
-    <a class="breadcrumb-item" href="{{relative album.url}}">{{album.title}}</a>
-  </h1>
+  <h1>My Photos <small>by <a href="https://francois.raminosona.com">Francois Raminosona</a></small></h1>
 </div>
 
 <script src="{{relative 'public/menu.js'}}"></script>

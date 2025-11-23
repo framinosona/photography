@@ -27,4 +27,4 @@ Disallow: /.DS_Store
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://framinosona.github.io/photography/sitemap.xml
+Sitemap: https://gallery.francois.raminosona.com/sitemap.xml

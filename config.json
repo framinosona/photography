@@ -8,5 +8,7 @@
   "sort-media-by": "filename",
   "cleanup": true,
   "embed-exif": true,
-  "theme-path": "./theme"
+  "theme-path": "./theme",
+  "include-videos": false,
+  "google-analytics": "G-899Z2MPYTV"
 }
